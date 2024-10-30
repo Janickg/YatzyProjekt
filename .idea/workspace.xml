@@ -7,11 +7,6 @@
     <list default="true" id="7bed1782-295b-4529-b5e0-ce21edd298f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tests/src/YatzyTests/YatzyResultsCalculatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tests/src/YatzyTests/YatzyResultsCalculatorTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Die.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Die.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/RaffleCup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/RaffleCup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/YatzyResultCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/YatzyResultCalculator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,32 +47,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests (1).executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.chanceScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.fourOfAKindScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.fullHouseScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.largeStraightScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.smallStraightScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.threeOfAKindScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.twoPairScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.upperSectionScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.YatzyResultsCalculatorTests.yatzyScoreTests.executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.YatzyResultsCalculatorTests (1).executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.chanceScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.fourOfAKindScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.fullHouseScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.largeStraightScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.smallStraightScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.threeOfAKindScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.twoPairScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.upperSectionScoreTests.executor": "Run",
+    "JUnit.YatzyResultsCalculatorTests.yatzyScoreTests.executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JUnit.YatzyResultsCalculatorTests">
     <configuration name="YatzyResultsCalculatorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Yatzy" />

@@ -24,7 +24,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="openjfx.javafx.controls" level="project" />
     <orderEntry type="library" name="glavo.hmcl.openjfx.javafx.controls" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit5.8.1">
@@ -42,5 +41,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="openjfx.javafx.controls" level="project" />
   </component>
 </module>
