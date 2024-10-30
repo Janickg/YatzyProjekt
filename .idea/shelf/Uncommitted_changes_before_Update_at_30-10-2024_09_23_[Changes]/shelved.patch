@@ -1,0 +1,145 @@
+Index: src/gui/YatzyGui.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gui;\r\n\r\nimport javafx.application.Application;\r\nimport javafx.geometry.Insets;\r\nimport javafx.geometry.VPos;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.layout.GridPane;\r\nimport javafx.stage.Stage;\r\n\r\npublic class YatzyGui extends Application {\r\n\r\n    public void start(Stage stage) throws Exception {\r\n        stage.setTitle(\"Yatzy\");\r\n        GridPane pane = new GridPane();\r\n        this.initContent(pane);\r\n\r\n        Scene scene = new Scene(pane);\r\n        stage.setScene(scene);\r\n        stage.show();\r\n    }\r\n\r\n    private void initContent(GridPane pane) {\r\n\r\n        pane.setGridLinesVisible(false);\r\n        pane.setPadding(new Insets(20));\r\n        pane.setHgap(10);\r\n        pane.setVgap(10);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/YatzyGui.java b/src/gui/YatzyGui.java
+--- a/src/gui/YatzyGui.java	(revision dbe8b0c13d8dfda295ab7968ac9b61f77f7276fd)
++++ b/src/gui/YatzyGui.java	(date 1730276034332)
+@@ -4,11 +4,14 @@
+ import javafx.geometry.Insets;
+ import javafx.geometry.VPos;
+ import javafx.scene.Scene;
++import javafx.scene.control.Button;
+ import javafx.scene.control.Label;
+ import javafx.scene.layout.GridPane;
+ import javafx.stage.Stage;
+ 
++
+ public class YatzyGui extends Application {
++    private final Label lblUpperSectionSum = new Label("Sum: ");
+ 
+     public void start(Stage stage) throws Exception {
+         stage.setTitle("Yatzy");
+@@ -26,5 +29,20 @@
+         pane.setPadding(new Insets(20));
+         pane.setHgap(10);
+         pane.setVgap(10);
++        Label[] uppersections = new Label[6];
++
++        for (int i = 0; i < 6; i++) {
++            uppersections [i] = new Label();
++            pane.add(uppersections[i],1,i+4);
++            uppersections[i].setStyle("-fx-font: 18 arial;");
++
++            Button upperSections = new Button(i + 1 + "'ere");
++            pane.add(upperSections, 0, i + 4);
++            upperSections.setMinWidth(90);
++
++        }
++        pane.add(lblUpperSectionSum, 1, 10);
++        lblUpperSectionSum.setStyle("-fx-font: 18 arial;");
++
+     }
+ }
+\ No newline at end of file
+Index: src/gui/YatzyApp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gui;\r\n\r\nimport javafx.application.Application;\r\n\r\npublic class YatzyApp {\r\n    public static void main(String[] args) {\r\n        Application.launch(YatzyGui.class);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/YatzyApp.java b/src/gui/YatzyApp.java
+--- a/src/gui/YatzyApp.java	(revision dbe8b0c13d8dfda295ab7968ac9b61f77f7276fd)
++++ b/src/gui/YatzyApp.java	(date 1730276052988)
+@@ -2,7 +2,7 @@
+ 
+ import javafx.application.Application;
+ 
+-public class YatzyApp {
++public class  YatzyApp {
+     public static void main(String[] args) {
+         Application.launch(YatzyGui.class);
+     }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"7bed1782-295b-4529-b5e0-ce21edd298f8\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;benn-christensen&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/benn-christensen/Yatzy.git&quot;,\r\n    &quot;accountId&quot;: &quot;547ece8f-27eb-4fbe-8f7c-ef6a15caaec7&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 7\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XL0x8ZeBWMVIVNYaaMxvHQ18rw\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Downloaded.Files.Path.Enabled\": \"false\",\r\n    \"JUnit.YatzyResultsCalculatorTests (1).executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.chanceScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.fourOfAKindScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.fullHouseScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.largeStraightScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.smallStraightScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.threeOfAKindScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.twoPairScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.upperSectionScoreTests.executor\": \"Run\",\r\n    \"JUnit.YatzyResultsCalculatorTests.yatzyScoreTests.executor\": \"Run\",\r\n    \"Repository.Attach.Annotations\": \"false\",\r\n    \"Repository.Attach.JavaDocs\": \"true\",\r\n    \"Repository.Attach.Sources\": \"true\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"master\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"project.structure.last.edited\": \"Libraries\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"JUnit.YatzyResultsCalculatorTests\">\r\n    <configuration name=\"YatzyResultsCalculatorTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Yatzy\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"YatzyTests\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"YatzyTests.YatzyResultsCalculatorTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"YatzyResultsCalculatorTests.chanceScoreTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Yatzy\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"YatzyTests\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"YatzyTests.YatzyResultsCalculatorTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"chanceScoreTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"YatzyResultsCalculatorTests.fullHouseScoreTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Yatzy\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"YatzyTests\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"YatzyTests.YatzyResultsCalculatorTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"fullHouseScoreTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"YatzyResultsCalculatorTests.largeStraightScoreTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Yatzy\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"YatzyTests\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"YatzyTests.YatzyResultsCalculatorTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"largeStraightScoreTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"YatzyResultsCalculatorTests.yatzyScoreTests\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Yatzy\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"YatzyTests\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"YatzyTests.YatzyResultsCalculatorTests\" />\r\n      <option name=\"METHOD_NAME\" value=\"yatzyScoreTests\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.chanceScoreTests\" />\r\n      <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.fullHouseScoreTests\" />\r\n      <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.largeStraightScoreTests\" />\r\n      <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.yatzyScoreTests\" />\r\n      <item itemvalue=\"JUnit.YatzyResultsCalculatorTests\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.YatzyResultsCalculatorTests\" />\r\n        <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.yatzyScoreTests\" />\r\n        <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.chanceScoreTests\" />\r\n        <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.fullHouseScoreTests\" />\r\n        <item itemvalue=\"JUnit.YatzyResultsCalculatorTests.largeStraightScoreTests\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"7bed1782-295b-4529-b5e0-ce21edd298f8\" name=\"Changes\" comment=\"\" />\r\n      <created>1698393299634</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1698393299634</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/Tests/src/YatzyTests/YatzyResultsCalculatorTests.java</url>\r\n          <line>148</line>\r\n          <properties class=\"YatzyTests.YatzyResultsCalculatorTests\" method=\"largeStraightScoreTests\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n            <option name=\"WATCH_EXIT\" value=\"false\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/Tests/src/YatzyTests/YatzyResultsCalculatorTests.java</url>\r\n          <line>210</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision dbe8b0c13d8dfda295ab7968ac9b61f77f7276fd)
++++ b/.idea/workspace.xml	(date 1730276621557)
+@@ -4,9 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="7bed1782-295b-4529-b5e0-ce21edd298f8" name="Changes" comment="">
++    <list default="true" id="7bed1782-295b-4529-b5e0-ce21edd298f8" name="Changes" comment="123">
+       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/gui/YatzyApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/YatzyApp.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/gui/YatzyGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/YatzyGui.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -49,6 +51,7 @@
+   </component>
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
++    "Application.YatzyApp.executor": "Run",
+     "Downloaded.Files.Path.Enabled": "false",
+     "JUnit.YatzyResultsCalculatorTests (1).executor": "Run",
+     "JUnit.YatzyResultsCalculatorTests.chanceScoreTests.executor": "Run",
+@@ -63,7 +66,7 @@
+     "JUnit.YatzyResultsCalculatorTests.yatzyScoreTests.executor": "Run",
+     "Repository.Attach.Annotations": "false",
+     "Repository.Attach.JavaDocs": "true",
+-    "Repository.Attach.Sources": "true",
++    "Repository.Attach.Sources": "false",
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "git-widget-placeholder": "master",
+@@ -73,7 +76,7 @@
+     "project.structure.side.proportion": "0.2"
+   }
+ }]]></component>
+-  <component name="RunManager" selected="JUnit.YatzyResultsCalculatorTests">
++  <component name="RunManager">
+     <configuration name="YatzyResultsCalculatorTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="Yatzy" />
+       <option name="PACKAGE_NAME" value="YatzyTests" />
+@@ -150,6 +153,10 @@
+       <updated>1698393299634</updated>
+     </task>
+     <servers />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="123" />
++    <option name="LAST_COMMIT_MESSAGE" value="123" />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_22\" default=\"true\" project-jdk-name=\"22\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision dbe8b0c13d8dfda295ab7968ac9b61f77f7276fd)
++++ b/.idea/misc.xml	(date 1730276034391)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_22_PREVIEW" project-jdk-name="22" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file

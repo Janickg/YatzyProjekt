@@ -21,16 +21,16 @@ import models.YatzyResultCalculator;
 public class YatzyGui extends Application {
     private final RaffleCup raffleCup = new RaffleCup();
     private final Die[] dice = raffleCup.getDice();
-    private final Text[] slagTekst = new Text[5];
+    private final Text[] rollText = new Text[5];
     private final CheckBox[] checkBoxes = new CheckBox[5];
-    private int rulTilbage = 0;
-    private final Label kastTilbageLabel = new Label();
-    private boolean rundeSlut = false;
+    private int remainingThrows = 0;
+    private final Label remainingThrowsLabel = new Label();
+    private boolean roundEnd = false;
     private boolean bonus = false;
     private final Label lblUpperSectionSum = new Label("Sum: ");
     private final Label lblUppersectionBonus = new Label();
     private final Label lblPointTotal = new Label();
-    private int turNummer = 0;
+    private int turnNumber = 0;
     private final int[] pointUpperSection = new int[6];
     private int pointSumUpperSection = 0;
     private int pointTotal = 0;
@@ -66,9 +66,9 @@ public class YatzyGui extends Application {
             diceRectangle.setArcWidth(20);
             diceRectangle.setFill(Color.LIGHTGRAY);
             diceRectangle.setStroke(Color.BLACK);
-            slagTekst[i] = new Text();
-            slagTekst[i].setStyle("-fx-font: 24 arial;");
-            StackPane stackPane = new StackPane(diceRectangle, slagTekst[i]);
+            rollText[i] = new Text();
+            rollText[i].setStyle("-fx-font: 24 arial;");
+            StackPane stackPane = new StackPane(diceRectangle, rollText[i]);
             diceBox.getChildren().add(stackPane);
         }
 
@@ -82,19 +82,19 @@ public class YatzyGui extends Application {
             diceCheckBoxes.getChildren().add(checkBoxes[i]);
         }
 
-        pane.add(kastTilbageLabel, 1, 2);
-        kastTilbageLabel.setStyle("-fx-font: 14 arial;");
+        pane.add(remainingThrowsLabel, 1, 2);
+        remainingThrowsLabel.setStyle("-fx-font: 14 arial;");
 
 
-        Button kastTerningerButton = new Button("Kast terningerne");
-        pane.add(kastTerningerButton, 0, 2);
-        kastTerningerButton.setOnAction(_ -> {
-            if (!rundeSlut && turNummer < 15) {
-                if (rulTilbage == 0) firstRoll();
+        Button throwDiceButton = new Button("Kast terningerne");
+        pane.add(throwDiceButton, 0, 2);
+        throwDiceButton.setOnAction(_ -> {
+            if (!roundEnd && turnNumber < 15) {
+                if (remainingThrows == 0) firstRoll();
                 else otherRolls();
             }
         });
-        kastTerningerButton.requestFocus();
+        throwDiceButton.requestFocus();
     }
 
     private void initScoreBoard(GridPane pane) {
@@ -176,42 +176,42 @@ public class YatzyGui extends Application {
             }
         });
 
-        Label lilleStraightLabel = new Label();
-        pane.add(lilleStraightLabel, 1, 16);
-        lilleStraightLabel.setStyle("-fx-font: 18 arial;");
+        Label SmallStraightLabel = new Label();
+        pane.add(SmallStraightLabel, 1, 16);
+        SmallStraightLabel.setStyle("-fx-font: 18 arial;");
 
         Button lilleStraightButton = new Button("Lille straight");
         pane.add(lilleStraightButton, 0, 16);
         lilleStraightButton.setMinWidth(90);
         lilleStraightButton.setOnAction(_ -> {
-            if (diceThrown && lilleStraightLabel.getText().isEmpty()) {
-                lilleStraightAction(lilleStraightLabel);
+            if (diceThrown && SmallStraightLabel.getText().isEmpty()) {
+                smallStraightAction(SmallStraightLabel);
             }
         });
 
-        Label storeStraightLabel = new Label();
-        pane.add(storeStraightLabel, 1, 17);
-        storeStraightLabel.setStyle("-fx-font: 18 arial;");
+        Label bigStraightLabel = new Label();
+        pane.add(bigStraightLabel, 1, 17);
+        bigStraightLabel.setStyle("-fx-font: 18 arial;");
 
         Button storeStraightButton = new Button("Store straight");
         pane.add(storeStraightButton, 0, 17);
         storeStraightButton.setMinWidth(90);
         storeStraightButton.setOnAction(_ -> {
-            if (diceThrown && storeStraightLabel.getText().isEmpty()) {
-                storStraightAction(storeStraightLabel);
+            if (diceThrown && bigStraightLabel.getText().isEmpty()) {
+                bigStraightAction(bigStraightLabel);
             }
         });
 
-        Label fuldHusLabel = new Label();
-        pane.add(fuldHusLabel, 1, 18);
-        fuldHusLabel.setStyle("-fx-font: 18 arial;");
+        Label fullHouseLabel = new Label();
+        pane.add(fullHouseLabel, 1, 18);
+        fullHouseLabel.setStyle("-fx-font: 18 arial;");
 
         Button fuldHusButton = new Button("Fuldt hus");
         pane.add(fuldHusButton, 0, 18);
         fuldHusButton.setMinWidth(90);
         fuldHusButton.setOnAction(_ -> {
-            if (diceThrown && fuldHusLabel.getText().isEmpty()) {
-                fuldHusAction(fuldHusLabel);
+            if (diceThrown && fullHouseLabel.getText().isEmpty()) {
+                fullHouseAction(fullHouseLabel);
             }
         });
 
@@ -247,7 +247,7 @@ public class YatzyGui extends Application {
         Button genstartButton = new Button("Genstart spil");
         pane.add(genstartButton, 1, 3);
         genstartButton.setOnAction(_ -> {
-            genstartSpil();
+            restartGame();
             for (Label upperSectionLabel : upperSectionLabels) {
                 upperSectionLabel.setText("");
             }
@@ -257,9 +257,9 @@ public class YatzyGui extends Application {
             twoPairLabel.setText("");
             threeOfAKindLabel.setText("");
             fourOfAKindLabel.setText("");
-            lilleStraightLabel.setText("");
-            storeStraightLabel.setText("");
-            fuldHusLabel.setText("");
+            SmallStraightLabel.setText("");
+            bigStraightLabel.setText("");
+            fullHouseLabel.setText("");
             chanceLabel.setText("");
             yatzyLabel.setText("");
         });
@@ -269,57 +269,57 @@ public class YatzyGui extends Application {
         raffleCup.throwDice();
         diceThrown = true;
         for (int i = 0; i < dice.length; i++) {
-            slagTekst[i].setText(Integer.toString(dice[i].getEyes()));
+            rollText[i].setText(Integer.toString(dice[i].getEyes()));
             checkBoxes[i].setSelected(false);
         }
-        rulTilbage = 2;
-        kastTilbageLabel.setText("Antal kast tilbage: " + rulTilbage);
+        remainingThrows = 2;
+        remainingThrowsLabel.setText("Antal kast tilbage: " + remainingThrows);
     }
 
     private void otherRolls() {
         for (int i = 0; i < dice.length; i++) {
             if (!checkBoxes[i].isSelected()) {
                 dice[i].roll();
-                slagTekst[i].setText(Integer.toString(dice[i].getEyes()));
+                rollText[i].setText(Integer.toString(dice[i].getEyes()));
             }
         }
-        rulTilbage--;
-        if (rulTilbage > 0) {
-            kastTilbageLabel.setText("Antal kast tilbage: " + rulTilbage);
+        remainingThrows--;
+        if (remainingThrows > 0) {
+            remainingThrowsLabel.setText("Antal kast tilbage: " + remainingThrows);
 
         } else {
-            rundeSlut = true;
-            kastTilbageLabel.setText("Ikke flere kast. Vælg point.");
+            roundEnd = true;
+            remainingThrowsLabel.setText("Ikke flere kast. Vælg point.");
         }
     }
 
-    private void nyTur() {
-        rundeSlut = false;
+    private void newTurn() {
+        roundEnd = false;
         diceThrown = false;
-        rulTilbage = 0;
+        remainingThrows = 0;
         bonus = false;
 
         lblPointTotal.setText("Point total: " + pointTotal);
-        if (turNummer < 14) {
-            kastTilbageLabel.setText("Rul igen");
+        if (turnNumber < 14) {
+            remainingThrowsLabel.setText("Rul igen");
         } else {
-            kastTilbageLabel.setText("Spillet er slut");
+            remainingThrowsLabel.setText("Spillet er slut");
         }
-        turNummer++;
+        turnNumber++;
         for (CheckBox checkBox : checkBoxes) {
             checkBox.setSelected(false);
         }
-        for (Text text : slagTekst) {
+        for (Text text : rollText) {
             text.setText("");
         }
 
     }
 
-    private void genstartSpil() {
-        nyTur();
+    private void restartGame() {
+        newTurn();
         lblPointTotal.setText("");
-        kastTilbageLabel.setText("");
-        turNummer = 0;
+        remainingThrowsLabel.setText("");
+        turnNumber = 0;
         pointTotal = 0;
         if (pointSumUpperSection > 0) {
             for (int i = 0; i < 6; i++) {
@@ -341,69 +341,69 @@ public class YatzyGui extends Application {
         }
         lblUpperSectionSum.setText("Sum: " + pointSumUpperSection);
         pointTotal += yatzyResultCalculator.upperSectionScore(eyes);
-        nyTur();
+        newTurn();
     }
 
     private void onePairAction(Label onePairLabel) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(this.dice);
         pointTotal += yatzyResultCalculator.onePairScore();
         onePairLabel.setText(Integer.toString(yatzyResultCalculator.onePairScore()));
-        nyTur();
+        newTurn();
     }
 
     private void twoPairAction(Label twoPairLabel) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.twoPairScore();
         twoPairLabel.setText(Integer.toString(yatzyResultCalculator.twoPairScore()));
-        nyTur();
+        newTurn();
     }
 
     private void threeOfAKindAction(Label threeOfAKindLabel) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.threeOfAKindScore();
         threeOfAKindLabel.setText(Integer.toString(yatzyResultCalculator.threeOfAKindScore()));
-        nyTur();
+        newTurn();
     }
 
     private void fourOfAKindAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.fourOfAKindScore();
         label.setText(Integer.toString(yatzyResultCalculator.fourOfAKindScore()));
-        nyTur();
+        newTurn();
     }
 
-    private void lilleStraightAction(Label label) {
+    private void smallStraightAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.smallStraightScore();
         label.setText(Integer.toString(yatzyResultCalculator.smallStraightScore()));
-        nyTur();
+        newTurn();
     }
 
-    private void storStraightAction(Label label) {
+    private void bigStraightAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.largeStraightScore();
         label.setText(Integer.toString(yatzyResultCalculator.largeStraightScore()));
-        nyTur();
+        newTurn();
     }
 
-    private void fuldHusAction(Label label) {
+    private void fullHouseAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.fullHouseScore();
         label.setText(Integer.toString(yatzyResultCalculator.fullHouseScore()));
-        nyTur();
+        newTurn();
     }
 
     private void chanceAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.chanceScore();
         label.setText(Integer.toString(yatzyResultCalculator.chanceScore()));
-        nyTur();
+        newTurn();
     }
 
     private void yatzyAction(Label label) {
         YatzyResultCalculator yatzyResultCalculator = new YatzyResultCalculator(dice);
         pointTotal += yatzyResultCalculator.yatzyScore();
         label.setText(Integer.toString(yatzyResultCalculator.yatzyScore()));
-        nyTur();
+        newTurn();
     }
 }
