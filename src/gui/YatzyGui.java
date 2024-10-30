@@ -219,10 +219,10 @@ public class YatzyGui extends Application {
         pane.add(chanceLabel, 1, 19);
         chanceLabel.setStyle("-fx-font: 18 arial;");
 
-        Button chanceButten = new Button("Chance");
-        pane.add(chanceButten, 0, 19);
-        chanceButten.setMinWidth(90);
-        chanceButten.setOnAction(_ -> {
+        Button chanceButton = new Button("Chance");
+        pane.add(chanceButton, 0, 19);
+        chanceButton.setMinWidth(90);
+        chanceButton.setOnAction(_ -> {
             if (diceThrown && chanceLabel.getText().isEmpty()) {
                 chanceAction(chanceLabel);
             }
