@@ -107,7 +107,7 @@ public class YatzyGui extends Application {
         for (int i = 0; i < 6; i++) {
             upperSectionLabels[i] = new Label();
             pane.add(upperSectionLabels[i], 1, i + 4);
-            upperSectionLabels[i].setStyle("-fx-font: 18 ;");
+            upperSectionLabels[i].setStyle("-fx-font: 18 ariel;");
 
             Button upperSections = new Button(i + 1 + "'ere");
             pane.add(upperSections, 0, i + 4);
