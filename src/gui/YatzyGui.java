@@ -28,7 +28,7 @@ public class YatzyGui extends Application {
     private boolean roundEnd = false;
     private boolean bonus = false;
     private final Label lblUpperSectionSum = new Label("Sum: ");
-    private final Label lblUppersectionBonus = new Label();
+    private final Label lblUpperSectionBonus = new Label();
     private final Label lblPointTotal = new Label();
     private int turnNumber = 0;
     private final int[] pointUpperSection = new int[6];
@@ -107,7 +107,7 @@ public class YatzyGui extends Application {
         for (int i = 0; i < 6; i++) {
             upperSectionLabels[i] = new Label();
             pane.add(upperSectionLabels[i], 1, i + 4);
-            upperSectionLabels[i].setStyle("-fx-font: 18 arial;");
+            upperSectionLabels[i].setStyle("-fx-font: 18 ;");
 
             Button upperSections = new Button(i + 1 + "'ere");
             pane.add(upperSections, 0, i + 4);
@@ -121,8 +121,8 @@ public class YatzyGui extends Application {
         pane.add(lblUpperSectionSum, 1, 10);
         lblUpperSectionSum.setStyle("-fx-font: 18 arial;");
 
-        pane.add(lblUppersectionBonus, 1, 11);
-        lblUppersectionBonus.setStyle("-fx-font: 18 arial;");
+        pane.add(lblUpperSectionBonus, 1, 11);
+        lblUpperSectionBonus.setStyle("-fx-font: 18 arial;");
 
         Label onePairLabel = new Label();
         pane.add(onePairLabel, 1, 12);
@@ -252,7 +252,7 @@ public class YatzyGui extends Application {
                 upperSectionLabel.setText("");
             }
             lblUpperSectionSum.setText("Sum: ");
-            lblUppersectionBonus.setText("");
+            lblUpperSectionBonus.setText("");
             onePairLabel.setText("");
             twoPairLabel.setText("");
             threeOfAKindLabel.setText("");
@@ -335,7 +335,7 @@ public class YatzyGui extends Application {
         label.setText(Integer.toString(pointUpperSection[eyes - 1]));
         pointSumUpperSection += yatzyResultCalculator.upperSectionScore(eyes);
         if (pointSumUpperSection >= 63 && !bonus) {
-            lblUppersectionBonus.setText("Bonus: 50");
+            lblUpperSectionBonus.setText("Bonus: 50");
             bonus = true;
             pointTotal += 50;
         }
